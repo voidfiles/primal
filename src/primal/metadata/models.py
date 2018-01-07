@@ -26,6 +26,7 @@ class Metadata(Model):
 
         table_name = "Metadata"
         host = os.environ.get("DYNAMODB_HOST", get_settings_value('host'))
+        region = os.environ.get("AWS_REGION", get_settings_value('region'))
         stream_view_type = STREAM_NEW_AND_OLD_IMAGE
 
     id = UnicodeAttribute(hash_key=True)
@@ -46,6 +47,7 @@ class Entity(Model):
 
         table_name = "Entity"
         host = os.environ.get("DYNAMODB_HOST", get_settings_value('host'))
+        region = os.environ.get("AWS_REGION", get_settings_value('region'))
         stream_view_type = STREAM_NEW_AND_OLD_IMAGE
 
     id = UnicodeAttribute(hash_key=True)
