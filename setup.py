@@ -30,14 +30,10 @@ setup(
     zip_safe=False,
     install_requires=[
         'Flask',
-        'pynamodb'
+        'pynamodb',
+        'class-registry',
+        'marshmallow==3.0.0b4',
     ],
-    # entry_points={
-    #     'console_scripts': [
-    #         'deploy = deploy.cli:main',
-    #         'notify = deploy.cli:notify',
-    #     ]
-    # },
     tests_require=['pytest'],
     cmdclass={'test': PyTest},
 )
