@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from pynamodb.attributes import (JSONAttribute, UTCDateTimeAttribute,
                                  UnicodeAttribute, UnicodeSetAttribute,
                                  NumberAttribute)
+from pynamodb.settings import get_settings_value
+from pynamodb.constants import STREAM_NEW_AND_OLD_IMAGE
 from pynamodb.models import Model
 
 
@@ -23,7 +25,8 @@ class Metadata(Model):
         """MetadataModel Meta class for config."""
 
         table_name = "Metadata"
-        host = os.environ.get("DYNAMODB_HOST", None)
+        host = os.environ.get("DYNAMODB_HOST", get_settings_value('host'))
+        stream_view_type = STREAM_NEW_AND_OLD_IMAGE
 
     id = UnicodeAttribute(hash_key=True)
     version = NumberAttribute(null=True)
@@ -42,7 +45,8 @@ class Entity(Model):
         """MetadataModel Entity class for config."""
 
         table_name = "Entity"
-        host = os.environ.get("DYNAMODB_HOST", None)
+        host = os.environ.get("DYNAMODB_HOST", get_settings_value('host'))
+        stream_view_type = STREAM_NEW_AND_OLD_IMAGE
 
     id = UnicodeAttribute(hash_key=True)
     version = NumberAttribute(null=True)
