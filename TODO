@@ -1,0 +1,25 @@
+- DONE: Create delete mechanism (Mark for delete)
+- DONE: Create validation mechanism before creating metadata
+- Metadata Model:
+  - [x] Create
+  - [X] Delete
+- Metadata API:
+  - [X] create
+  - [X] delete
+- Entity Model:
+  - [X] create
+  - [X] update
+    - [X] update model
+    - [X] update metadata
+    - [X] Conditional Update
+  - [X] delete
+- Entity API
+  - [X] create
+  - [X] update
+  - [X] metadata atomically
+- Handle updates mechanism for metadata to an Entity
+- Create DONE:Quote, and Image metadata Items
+- Create Feeds of entities
+- Create an API for
+  - entity, metadata, feeds
+- Create DynamoDB stream for replicating objects to s3 for bulk reads

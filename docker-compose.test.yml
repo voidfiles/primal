@@ -1,0 +1,16 @@
+dynamodb:
+  # Setting volumes make's sure that we don't overwrite our
+  # working dev data.
+  volumes:
+    - ./.tmp:/tmp/blah
+  entrypoint:
+      - java
+      - -jar
+      - DynamoDBLocal.jar
+      - -inMemory
+      - -sharedDb
+primal:
+  volumes:
+    - ./src:/usr/src/app/src
+    - ./tests:/usr/src/app/tests
+  working_dir: /usr/src/app

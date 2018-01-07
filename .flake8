@@ -1,0 +1,4 @@
+[flake8]
+ignore = D,I
+exclude = .git,__pycache__,tests/
+max-complexity = 10

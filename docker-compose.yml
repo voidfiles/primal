@@ -1,0 +1,29 @@
+dynamodb:
+  image: dwmkerr/dynamodb
+  ports:
+    - "8000:8000"
+  volumes:
+    - .tmp/dynamodb/data/:/data/
+  entrypoint:
+      - java
+      - -jar
+      - DynamoDBLocal.jar
+      - -dbPath
+      - /data
+primal:
+  build: .
+  ports:
+    - "8001:8001"
+  volumes:
+    - ./src:/usr/src/app/src
+  working_dir: /usr/src/app
+  links:
+    - dynamodb
+  environment:
+    - FLASK_APP=src/primal/main.py
+    - FLASK_DEBUG=1
+    - DYNAMODB_HOST=http://dynamodb:8000
+    - AWS_ACCESS_KEY_ID="fake"
+    - AWS_SECRET_ACCESS_KEY="fake"
+    - AWS_DEFAULT_REGION=us-east-1
+  command: flask run -h 0.0.0.0 -p 8001

@@ -1,0 +1,4 @@
+Flask
+pynamodb
+class-registry
+marshmallow==3.0.0b4
